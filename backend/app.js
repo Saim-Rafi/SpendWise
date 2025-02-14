@@ -7,44 +7,35 @@ import helmet from "helmet";
 import morgan from "morgan";
 import transactionRoutes from "./Routers/Transactions.js";
 import userRoutes from "./Routers/userRouter.js";
-import path from "path";
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "./.env" });
 const app = express();
 
-const port = process.env.PORT;
+//const port = process.env.PORT;
+const port = process.env.PORT || 5000; // Default to 5000 if PORT is not set
+
+
 
 connectDB();
-
-const allowedOrigins = [
-  "https://main.d1sj7cd70hlter.amplifyapp.com",
-  "https://expense-tracker-app-three-beryl.vercel.app",
-  // add more origins as needed
-];
 
 // Middleware
 app.use(express.json());
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: "*", // Allow all origins
+    credentials: true, // if you need to send cookies or other credentials
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(helmet());
+app.use(morgan("common"));
 
-// Router
-app.use("/api/v1", transactionRoutes);
+// Routes
+app.use("/api/transactions", transactionRoutes);
 app.use("/api/auth", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });

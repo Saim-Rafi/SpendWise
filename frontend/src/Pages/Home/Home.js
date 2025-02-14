@@ -34,7 +34,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [refresh, setRefresh] = useState(false);
-  const [frequency, setFrequency] = useState("7");
+  const [frequency, setFrequency] = useState("365");
   const [type, setType] = useState("all");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -137,15 +137,18 @@ const Home = () => {
     setFrequency("7");
   };
 
-
-  
-
-
   useEffect(() => {
-
     const fetchAllTransactions = async () => {
       try {
         setLoading(true);
+        // Log request payload
+        console.log("Sending API Request:", {
+          userId: cUser._id,
+          frequency,
+          startDate,
+          endDate,
+          type,
+        });
         console.log(cUser._id, frequency, startDate, endDate, type);
         const { data } = await axios.post(getTransactions, {
           userId: cUser._id,
@@ -155,9 +158,9 @@ const Home = () => {
           type: type,
         });
         console.log(data);
-  
+
         setTransactions(data.transactions);
-  
+
         setLoading(false);
       } catch (err) {
         // toast.error("Error please Try again...", toastOptions);
@@ -192,23 +195,23 @@ const Home = () => {
           >
             <div className="filterRow">
               <div className="text-white">
-                <Form.Group className="mb-3" controlId="formSelectFrequency">
+                <Form.Group className="mb-3 fw-bold" controlId="formSelectFrequency">
                   <Form.Label>Select Frequency</Form.Label>
                   <Form.Select
                     name="frequency"
                     value={frequency}
                     onChange={handleChangeFrequency}
                   >
-                    <option value="7">Last Week</option>
-                    <option value="30">Last Month</option>
                     <option value="365">Last Year</option>
+                    <option value="30">Last Month</option>
+                    <option value="7">Last Week</option>
                     <option value="custom">Custom</option>
                   </Form.Select>
                 </Form.Group>
               </div>
 
               <div className="text-white type">
-                <Form.Group className="mb-3" controlId="formSelectFrequency">
+                <Form.Group className="mb-3 fw-bold" controlId="formSelectFrequency">
                   <Form.Label>Type</Form.Label>
                   <Form.Select
                     name="type"
@@ -222,21 +225,24 @@ const Home = () => {
                 </Form.Group>
               </div>
 
-              <div className="text-white iconBtnBox">
-                <FormatListBulletedIcon
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleTableClick}
-                  className={`${
-                    view === "table" ? "iconActive" : "iconDeactive"
-                  }`}
-                />
-                <BarChartIcon
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleChartClick}
-                  className={`${
-                    view === "chart" ? "iconActive" : "iconDeactive"
-                  }`}
-                />
+              <div>
+                <p className="text-white mb-2 fw-bold">Select View</p>
+                <div className="text-white iconBtnBox">
+                  <FormatListBulletedIcon
+                    sx={{ cursor: "pointer" }}
+                    onClick={handleTableClick}
+                    className={`${
+                      view === "table" ? "iconActive" : "iconDeactive"
+                    }`}
+                  />
+                  <BarChartIcon
+                    sx={{ cursor: "pointer" }}
+                    onClick={handleChartClick}
+                    className={`${
+                      view === "chart" ? "iconActive" : "iconDeactive"
+                    }`}
+                  />
+                </div>
               </div>
 
               <div>
@@ -384,7 +390,7 @@ const Home = () => {
             )}
 
             <div className="containerBtn">
-              <Button variant="primary" onClick={handleReset}>
+              <Button variant="secondary" onClick={handleReset}>
                 Reset Filter
               </Button>
             </div>

@@ -51,7 +51,7 @@ export const addTransactionController = async (req, res) => {
 
     user.transactions.push(newTransaction);
 
-    user.save();
+    user.save();   
 
     return res.status(200).json({
       success: true,
@@ -69,7 +69,7 @@ export const getAllTransactionController = async (req, res) => {
   try {
     const { userId, type, frequency, startDate, endDate } = req.body;
 
-    console.log(userId, type, frequency, startDate, endDate);
+    console.log("\n✅ Received API Request:", { userId, type, frequency, startDate, endDate });
 
     const user = await User.findById(userId);
 
@@ -100,12 +100,11 @@ export const getAllTransactionController = async (req, res) => {
         $lte: moment(endDate).toDate(),
       };
     }
-
-    // console.log(query);
+    console.log("MongoDB Query:", JSON.stringify(query, null, 2)); // delete this
 
     const transactions = await Transaction.find(query);
 
-    // console.log(transactions);
+    console.log("Fetched Transactions:", transactions); // and this tooooo
 
     return res.status(200).json({
       success: true,
