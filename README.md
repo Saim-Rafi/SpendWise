@@ -5,9 +5,6 @@ SpendWise is a web-based application designed to assist users in tracking and ma
 
 ### Live Website: 
 
-### Vercel Link: 
-
-
     
 ## Objectives:
 
@@ -70,9 +67,11 @@ Support attaching receipts or other relevant documents to expense entries.
 - Deployment:
 
     Deploy the application to a cloud provider like AWS and render.
-    frontend has deployed on AWS and backend on Render.
+    frontend has deployed on Vercel and backend on Render.
 
     Set up Continuous Integration and Continuous Deployment (CI/CD) pipelines for automated builds and deployments.
+
+<br>
 ## Run Locally
 
 Clone the project
@@ -152,10 +151,6 @@ create config folder and add config.env file in it and all all env variables the
 
 
 
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## License
