@@ -1,7 +1,7 @@
 # 💸 SpendWise  
 **SpendWise** is a web-based application designed to help users track and manage their daily expenses 🧾. Built with the powerful **MERN stack** (MongoDB, Express.js, React.js, and Node.js), this app offers a **scalable**, **responsive**, and **user-friendly** experience 🚀.
 
-### 🌐 Live Website:  
+### 🌐 Live Website:  https://spend-wise-ao1m.vercel.app/
 👉 *[[SpendWise LIVE LINK](https://spend-wise-ao1m.vercel.app/)]* 
 
 
