@@ -122,16 +122,10 @@ create config folder and add config.env file in it and all all env variables the
 ## Screenshots
 
 <p float="left">
-![App Screenshot](https://i.postimg.cc/6qLR3WNt/Expense-Management-System-Brave-19-04-2023-11-08-53.png)
-
-![App Screenshot](https://i.postimg.cc/DynLNXqZ/Expense-Management-System-Brave-19-04-2023-11-08-59.png)
-
-![App Screenshot](https://i.postimg.cc/Dy6L3wgc/Expense-Management-System-Brave-19-04-2023-11-15-46.png)
-
-![App Screenshot](https://i.postimg.cc/13YF47bn/Expense-Management-System-Brave-19-04-2023-11-15-54.png)
-
-![App Screenshot](https://i.postimg.cc/rwpWV2Z2/Expense-Management-System-Brave-19-04-2023-11-16-01.png)
-
+<img width="45%" alt="Screenshot 2025-04-30 at 1 27 32 PM" src="https://github.com/user-attachments/assets/c339f919-93f0-4ccd-9084-b7a0cecb4863" />
+<img width="45%" alt="Screenshot 2025-04-30 at 1 27 51 PM" src="https://github.com/user-attachments/assets/c989dc0c-b478-45d1-8563-dcd72e5d6666" />
+<img width="45%" alt="Screenshot 2025-04-30 at 1 28 03 PM" src="https://github.com/user-attachments/assets/e664f3ee-381f-466f-920c-e6be8c0deb2c" />
+<img width="45%" alt="Screenshot 2025-04-30 at 1 28 15 PM" src="https://github.com/user-attachments/assets/2c4fdc47-256e-4735-956e-b780d5009532" />
 </p>
 
 
