@@ -1,5 +1,5 @@
 // const host = "http://localhost:3000";
-const host = "http://localhost:5001";
+const host = process.env.REACT_APP_API_HOST || "http://localhost:5001";
 export const setAvatarAPI = `${host}/api/auth/setAvatar`;
 export const registerAPI = `${host}/api/auth/register`;
 export const loginAPI = `${host}/api/auth/login`;
