@@ -22,7 +22,7 @@ connectDB();
 app.use(express.json());
 app.use(
   cors({
-    origin: "*", // Allow all origins
+    origin: ["http://localhost:3000", "https://spend-wise-ao1m.vercel.app"], // Allow all origins
     credentials: true, // if you need to send cookies or other credentials
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
