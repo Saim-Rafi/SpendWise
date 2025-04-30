@@ -56,6 +56,11 @@ const Home = () => {
       if (localStorage.getItem("user")) {
         const user = JSON.parse(localStorage.getItem("user"));
         console.log(user);
+        if (!user?._id) {
+          console.error("Invalid user object:", user);
+          navigate("/login");
+          return;
+        }
 
         if (user.isAvatarImageSet === false || user.avatarImage === "") {
           navigate("/setAvatar");
@@ -138,6 +143,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    if (!cUser) return;
     const fetchAllTransactions = async () => {
       try {
         setLoading(true);
@@ -169,7 +175,7 @@ const Home = () => {
     };
 
     fetchAllTransactions();
-  }, [refresh, frequency, endDate, type, startDate]);
+  }, [cUser,refresh, frequency, endDate, type, startDate]);
 
   const handleTableClick = (e) => {
     setView("table");

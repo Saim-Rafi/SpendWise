@@ -51,7 +51,7 @@ export const addTransactionController = async (req, res) => {
 
     user.transactions.push(newTransaction);
 
-    user.save();   
+    user.save();
 
     return res.status(200).json({
       success: true,
@@ -69,7 +69,13 @@ export const getAllTransactionController = async (req, res) => {
   try {
     const { userId, type, frequency, startDate, endDate } = req.body;
 
-    console.log("\n✅ Received API Request:", { userId, type, frequency, startDate, endDate });
+    console.log("\n✅ Received API Request:", {
+      userId,
+      type,
+      frequency,
+      startDate,
+      endDate,
+    });
 
     const user = await User.findById(userId);
 
@@ -85,14 +91,14 @@ export const getAllTransactionController = async (req, res) => {
       user: userId,
     };
 
-    if (type !== 'all') {
+    if (type !== "all") {
       query.transactionType = type;
     }
 
     // Add date conditions based on 'frequency' and 'custom' range
-    if (frequency !== 'custom') {
+    if (frequency !== "custom") {
       query.date = {
-        $gt: moment().subtract(Number(frequency), "days").toDate()
+        $gt: moment().subtract(Number(frequency), "days").toDate(),
       };
     } else if (startDate && endDate) {
       query.date = {
@@ -117,7 +123,6 @@ export const getAllTransactionController = async (req, res) => {
     });
   }
 };
-
 
 export const deleteTransactionController = async (req, res) => {
   try {
